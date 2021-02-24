@@ -1,28 +1,17 @@
 /*
-*   Data sent from CasparCG Client as templateData
-*   is pushed into corresponding HTML id element
-*
-*   Usage:
-*   insert a script reference in the HTML template header.
-*   ex: <script type="text/javascript" src="CasparCG.js"></script>
-*   Make sure that the id that you refer to is the innermost tag.
-*   Everything within that tag id will be replaced by the value sent from CasparCG
-*
-*   put together by Tomas Linden
-*   modified by Øjvind Søgaard Andersen
-*
-   Structure of data sent from CasparCG:
-   <templateData>
-      <componentData id="#idCaspar#">
-         <data id="text" value="#valCaspar#" />
-      </componentData>
-      :
-      :
-      <componentData id="#idCaspar#">
-         <data id="text" value="#valCaspar#" />
-      </componentData>
-   </templateData>
-*/
+ *   Usage:
+ *   insert a script reference in the HTML header.
+ *   ex: <script type="text/javascript" src="CasparCG.js"></script>
+ *   Make sure that the class that you refer to is the innermost tag.
+ *   Either the item will have it's content replace or src updated if an image
+ *
+ *   Items with classes 'CasparCG-XXX' will be replaced
+ *   So f0 would have the class 'CasparCG-f0'
+ *
+ *   put together by Tomas Linden
+ *   modified by Mark Rapson
+ */
+
 // Global variable for data from CasparCG
 var dataCaspar = {};
 
@@ -58,9 +47,19 @@ function XML2JSON(node) {
 // Main function to insert data
 function dataInsert(dataCaspar) {
   for (var idCaspar in dataCaspar) {
-    var idTemplate = document.getElementById(idCaspar);
-    if (idTemplate != undefined) {
-      idTemplate.innerHTML = escapeHtml(dataCaspar[idCaspar]);
+    var applicableElements = document.getElementsByClassName('CasparCG-' + idCaspar);
+    if (applicableElements) {
+      // Loop through Applicable DIVs
+      [].slice.call(applicableElements).forEach(function(currentElement) {
+        console.log(currentElement.tagName);
+        if (currentElement.tagName == 'img') {
+          //Set Image if img item
+          currentElement.src = dataCaspar[idCaspar];
+        } else {
+          //Set InnerHTML otherwise
+          currentElement.innerHTML = escapeHtml(dataCaspar[idCaspar]);
+        }
+      })
     }
   }
 }
