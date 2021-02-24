@@ -249,15 +249,20 @@
       // GWD Predefined Function
       gwd.actions.timeline.pause('document.body');
     };
+    gwd.auto_BodyEvent_5 = function(event) {
+      // GWD Predefined Function
+      gwd.actions.timeline.gotoAndPlay('document.body', 'start');
+    };
   </script>
   <script type="text/javascript" gwd-events="registration">
     // Support code for event handling in Google Web Designer
-     // This script block is auto-generated. Please do not edit!
+    // This script block is auto-generated. Please do not edit!
     gwd.actions.events.registerEventHandlers = function(event) {
       gwd.actions.events.addHandler('document.body', 'event-1', gwd.auto_BodyEvent_1, false);
       gwd.actions.events.addHandler('document.body', 'event-2', gwd.auto_BodyEvent_2, false);
       gwd.actions.events.addHandler('document.body', 'event-3', gwd.auto_BodyEvent_3, false);
       gwd.actions.events.addHandler('document.body', 'event-4', gwd.auto_BodyEvent_4, false);
+      gwd.actions.events.addHandler('document.body', 'event-5', gwd.auto_BodyEvent_5, false);
       gwd.actions.timeline.captureAnimationEnd(document.body);
     };
     gwd.actions.events.deregisterEventHandlers = function(event) {
@@ -265,6 +270,7 @@
       gwd.actions.events.removeHandler('document.body', 'event-2', gwd.auto_BodyEvent_2, false);
       gwd.actions.events.removeHandler('document.body', 'event-3', gwd.auto_BodyEvent_3, false);
       gwd.actions.events.removeHandler('document.body', 'event-4', gwd.auto_BodyEvent_4, false);
+      gwd.actions.events.removeHandler('document.body', 'event-5', gwd.auto_BodyEvent_5, false);
       gwd.actions.timeline.releaseAnimationEnd(document.body);
     };
     document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
@@ -273,7 +279,7 @@
   <script type="text/javascript" charset="utf-8" src="CasparCG.js"></script>
 </head>
 
-<body class="htmlNoPages" data-gwd-animation-labels="stop,4500">
+<body class="htmlNoPages" data-gwd-animation-labels="start,1600;stop,4500">
   <svg data-gwd-shape="rectangle" class="gwd-rect-157e gwd-gen-lz8mgwdanimation gwd-svg-40l0"></svg>
   <svg data-gwd-shape="rectangle" class="gwd-rect-157e gwd-gen-eb0kgwdanimation gwd-rect-ptf0"></svg>
   <p class="gwd-p-hxjo gwd-gen-1hvogwdanimation gwd-p-1hcy CasparCG-f0">This is f0</p>
@@ -282,6 +288,7 @@
   <div class="gwd-animation-event event-2-animation" data-event-name="event-2" data-event-time="2000"></div>
   <div class="gwd-animation-event event-3-animation" data-event-name="event-3" data-event-time="2500"></div>
   <div class="gwd-animation-event event-4-animation" data-event-name="event-4" data-event-time="3000"></div>
+  <div class="gwd-animation-event event-5-animation" data-event-name="event-5" data-event-time="3100"></div>
 </body>
 
 </html>
