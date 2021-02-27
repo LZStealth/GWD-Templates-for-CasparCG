@@ -51,7 +51,6 @@ function dataInsert(dataCaspar) {
     if (applicableElements) {
       // Loop through Applicable DIVs
       [].slice.call(applicableElements).forEach(function(currentElement) {
-        console.log(currentElement.tagName);
         if (currentElement.tagName == 'img') {
           //Set Image if img item
           currentElement.src = dataCaspar[idCaspar];
